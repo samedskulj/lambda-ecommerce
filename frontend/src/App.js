@@ -5,6 +5,7 @@ import useStyles from "./material-styles/styles";
 import { theme } from "./material-styles/styles";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { Container, Grid } from "@material-ui/core";
+import Home from "./pages/Home";
 function App() {
   const classes = useStyles();
   return (
@@ -13,7 +14,7 @@ function App() {
         <Header></Header>
         <Container>
           <Grid container className={classes.main}>
-            <Grid item>POOOOOOOOOOY</Grid>
+            <Home></Home>
           </Grid>
         </Container>
         <Footer></Footer>

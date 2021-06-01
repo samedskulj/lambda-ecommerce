@@ -28,16 +28,18 @@ const Header = () => {
             <Typography variant="h6" className={classes.title}>
               Lambda
             </Typography>
-            <Button color="inherit" className={classes.btnlogin}>
-              <IconButton color="inherit">
-                <AddShoppingCartIcon></AddShoppingCartIcon>
-              </IconButton>
+
+            <Button color="inherit">
+              <AddShoppingCartIcon
+                className={classes.btnlogin}
+              ></AddShoppingCartIcon>
               Cart
             </Button>
+
             <Button color="inherit">
-              <IconButton color="inherit">
-                <PermContactCalendarIcon></PermContactCalendarIcon>
-              </IconButton>
+              <PermContactCalendarIcon
+                className={classes.btnlogin}
+              ></PermContactCalendarIcon>
               Login
             </Button>
           </Toolbar>
