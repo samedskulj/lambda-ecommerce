@@ -8,6 +8,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import useStyles from "../material-styles/styles";
+import Rating from "./Rating";
 const Product = ({ product }) => {
   const classes = useStyles();
   return (
@@ -37,6 +38,12 @@ const Product = ({ product }) => {
             <Typography variant="body2" color="textSecondary" component="p">
               {product.category}
             </Typography>
+          </CardContent>
+          <CardContent className={classes.ratingContent}>
+            <Rating
+              value={product.rating}
+              text={`${product.numReviews} reviews`}
+            />
           </CardContent>
         </CardActionArea>
         <CardActions>

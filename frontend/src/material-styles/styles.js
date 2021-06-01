@@ -13,9 +13,7 @@ export default makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  rootCard: {
-    width: 370,
-  },
+
   title: {
     flexGrow: 1,
   },
@@ -39,5 +37,9 @@ export default makeStyles((theme) => ({
     display: "flex",
 
     justifyContent: "space-between",
+  },
+  ratingContent: {},
+  textRating: {
+    marginLeft: "15px",
   },
 }));
