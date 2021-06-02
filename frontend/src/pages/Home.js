@@ -1,6 +1,6 @@
 import React from "react";
 import products from "../products";
-import { Grid } from "@material-ui/core";
+import { Grid, Container } from "@material-ui/core";
 import Product from "../components/Product";
 const Home = () => {
   return (

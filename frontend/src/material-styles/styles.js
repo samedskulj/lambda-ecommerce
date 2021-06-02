@@ -28,7 +28,10 @@ export default makeStyles((theme) => ({
     textAlign: "center",
   },
   main: {
-    height: "150vh",
+    marginBottom: theme.spacing(4),
+  },
+  headerMargin: {
+    marginBottom: theme.spacing(5),
   },
   media: {
     height: 300,
@@ -38,8 +41,23 @@ export default makeStyles((theme) => ({
 
     justifyContent: "space-between",
   },
-  ratingContent: {},
   textRating: {
     marginLeft: "15px",
+  },
+  descContent: {
+    height: 210,
+  },
+  desc: {
+    height: "100%",
+  },
+  linkovi: {
+    textDecoration: "none",
+    color: "inherit",
+  },
+  gridImg: {
+    width: "100%",
+  },
+  grid3RatingName: {
+    padding: "10px 30px",
   },
 }));

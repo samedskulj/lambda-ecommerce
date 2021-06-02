@@ -9,25 +9,30 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import useStyles from "../material-styles/styles";
 import Rating from "./Rating";
+import { Link } from "react-router-dom";
 const Product = ({ product }) => {
   const classes = useStyles();
   return (
     <>
       <Card className={classes.rootCard}>
         <CardActionArea className={classes.cardAction}>
-          <a href={`/product/${product._id}`}>
+          <Link to={`/product/${product._id}`}>
             <CardMedia
               className={classes.media}
               image={product.image}
               title="Contemplative Reptile"
             />
-          </a>
-
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
+          </Link>
+          <CardContent className={classes.descContent}>
+            <Typography gutterBottom variant="h6" component="h4">
               {product.name}
             </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography
+              variant="body2"
+              color="textSecondary"
+              component="p"
+              className={classes.desc}
+            >
               {product.description}
             </Typography>
           </CardContent>
@@ -46,14 +51,6 @@ const Product = ({ product }) => {
             />
           </CardContent>
         </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            {product.brand}
-          </Button>
-          <Button size="small" color="primary">
-            {product.category}
-          </Button>
-        </CardActions>
       </Card>
     </>
   );
