@@ -1,26 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Grid, Button, Divider } from "@material-ui/core";
+import {
+  Grid,
+  Button,
+  Divider,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@material-ui/core";
 import Rating from "../components/Rating";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import useStyles from "../material-styles/styles";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
-
+import { listProductDetails } from "../actions/productActions";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 
-const ProductScreen = ({ match }) => {
-  const [product, setProduct] = useState([]);
+const ProductScreen = ({ match, history }) => {
+  const [qty, setQty] = useState();
+
+  const dispatch = useDispatch();
+
+  const productDetailList = useSelector((state) => state.productDetails);
+  const { product, loading, error } = productDetailList;
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const { data } = await axios.get(`/api/products/${match.params.id}`);
-      setProduct(data);
-    };
-    fetchProducts();
-  }, [match]);
-  console.log(product);
+    dispatch(listProductDetails(match.params.id));
+  }, [match, dispatch]);
+
+  const addToCartHandler = () => {
+    history.push(`/cart/${match.params.id}?qty=${qty}`);
+  };
+
   const classes = useStyles();
   return (
     <>
@@ -74,17 +88,48 @@ const ProductScreen = ({ match }) => {
                         Status:
                       </Grid>
                       <Grid item>
-                        {product.countInStock >= 0 ? (
-                          <strong>In stock</strong>
-                        ) : (
+                        {product.countInStock === 0 ? (
                           <strong>Out of stock</strong>
+                        ) : (
+                          <strong>In Stock</strong>
                         )}
                       </Grid>
                     </Grid>
                   </ListItem>
                   <Divider></Divider>
+                  {product.countInStock > 0 && (
+                    <ListItem>
+                      <Grid container>
+                        <Grid item md={9}>
+                          Qty:
+                        </Grid>
+                        <Grid item>
+                          <FormControl>
+                            <Select
+                              native
+                              labelId="demo-simple-select-label"
+                              id="demo-simple-select"
+                              value={qty}
+                              onChange={(e) => setQty(e.target.value)}
+                            >
+                              {[...Array(product.countInStock).keys()].map(
+                                (x) => (
+                                  <option key={x + 1} value={x + 1}>
+                                    {" "}
+                                    {x + 1}
+                                  </option>
+                                )
+                              )}
+                            </Select>
+                          </FormControl>
+                        </Grid>
+                      </Grid>
+                    </ListItem>
+                  )}
+                  <Divider></Divider>
                   <ListItem>
                     <Button
+                      onClick={addToCartHandler}
                       variant="contained"
                       color="primary"
                       fullWidth="true"

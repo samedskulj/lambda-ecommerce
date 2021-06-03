@@ -8,6 +8,7 @@ import { Container, Grid } from "@material-ui/core";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages/Home";
 import ProductScreen from "./pages/ProductScreen";
+import CartScreen from "./pages/CartScreen";
 function App() {
   const classes = useStyles();
   return (
@@ -23,6 +24,7 @@ function App() {
                 path="/product/:id"
                 component={ProductScreen}
               ></Route>
+              <Route path="/cart/:id?" component={CartScreen}></Route>
               <Footer></Footer>
             </Container>
           </ThemeProvider>
