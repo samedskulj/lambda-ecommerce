@@ -60,4 +60,19 @@ export default makeStyles((theme) => ({
   grid3RatingName: {
     padding: "10px 30px",
   },
+  large: {
+    width: theme.spacing(14),
+    height: theme.spacing(14),
+  },
+  list: {
+    width: "100%",
+    border: "2px solid green",
+  },
+  listItemFlex: {
+    display: "flex",
+    padding: "20px",
+    textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 }));

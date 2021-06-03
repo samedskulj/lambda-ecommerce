@@ -20,7 +20,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 
 const ProductScreen = ({ match, history }) => {
-  const [qty, setQty] = useState();
+  const [qty, setQty] = useState(1);
 
   const dispatch = useDispatch();
 
