@@ -10,6 +10,8 @@ import Home from "./pages/Home";
 import ProductScreen from "./pages/ProductScreen";
 import CartScreen from "./pages/CartScreen";
 import LoginScreen from "./pages/LoginScreen";
+import RegisterScreen from "./pages/RegisterScreen";
+import ProfileScreen from "./pages/ProfileScreen";
 function App() {
   const classes = useStyles();
   return (
@@ -27,6 +29,8 @@ function App() {
               ></Route>
               <Route path="/cart/:id?" component={CartScreen}></Route>
               <Route path="/login" component={LoginScreen}></Route>
+              <Route path="/register" component={RegisterScreen}></Route>
+              <Route path="/profile" component={ProfileScreen}></Route>
               <Footer></Footer>
             </Container>
           </ThemeProvider>

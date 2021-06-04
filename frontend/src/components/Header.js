@@ -32,6 +32,7 @@ const Header = () => {
   const classes = useStyles();
   const logoutHandler = () => {
     dispatch(logout());
+    window.location.reload();
   };
   return (
     <>

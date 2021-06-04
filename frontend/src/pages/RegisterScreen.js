@@ -13,16 +13,20 @@ import useStyles from "../material-styles/styles";
 import Container from "@material-ui/core/Container";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../actions/userActions";
+import { login, register } from "../actions/userActions";
 import Alert from "@material-ui/lab/Alert";
-const LoginScreen = ({ location, history }) => {
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+const RegisterScreen = ({ location, history }) => {
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [confirmpassword, setConfirmPassword] = useState("");
+  const [message, setMessage] = useState(null);
   const dispatch = useDispatch();
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { loading, error, userInfo } = userLogin;
+  const userRegister = useSelector((state) => state.userRegister);
+  const { loading, error, userInfo } = userRegister;
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
   useEffect(() => {
@@ -32,7 +36,11 @@ const LoginScreen = ({ location, history }) => {
   }, [history, userInfo, redirect]);
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch(login(email, password));
+    if (password !== confirmpassword) {
+      setMessage("Passwords do not match!");
+    } else {
+      dispatch(register(name, email, password));
+    }
   };
 
   return (
@@ -40,17 +48,31 @@ const LoginScreen = ({ location, history }) => {
       <Container>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
+            <ExitToAppIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign Up
           </Typography>
           {error && (
             <Alert style={{ marginTop: "20px" }} severity="error">
               {error}
             </Alert>
           )}
+          {message && <Alert severity="error">{message}</Alert>}
           <form className={classes.form}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="name"
+              label="Username"
+              name="name"
+              autoFocus
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
             <TextField
               variant="outlined"
               margin="normal"
@@ -78,6 +100,19 @@ const LoginScreen = ({ location, history }) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="confirmpassword"
+              label="Confirm Password"
+              type="password"
+              id="confirmpassword"
+              autoComplete="current-password"
+              value={confirmpassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
 
             <Button
               type="submit"
@@ -87,16 +122,16 @@ const LoginScreen = ({ location, history }) => {
               className={classes.submit}
               onClick={submitHandler}
             >
-              Sign In
+              Sign Up
             </Button>
             <Grid container>
               <Grid item>
                 <Link
                   className={classes.linkovi}
-                  to={redirect ? `/register?redirect=${redirect}` : "/register"}
+                  to={redirect ? `/login?redirect=${redirect}` : "/login"}
                   variant="body2"
                 >
-                  Don't have an account? Sign Up
+                  Already have an account? Sign in then!
                 </Link>
               </Grid>
             </Grid>
@@ -107,4 +142,4 @@ const LoginScreen = ({ location, history }) => {
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;
