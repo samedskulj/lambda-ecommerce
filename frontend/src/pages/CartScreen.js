@@ -42,7 +42,7 @@ const CartScreen = ({ match, location, history }) => {
   };
   return (
     <>
-      <Grid container>
+      <Grid container spacing={3}>
         <Grid item md={8}>
           <h1>Shopping Cart</h1>
           {cartItems.length === 0 ? (

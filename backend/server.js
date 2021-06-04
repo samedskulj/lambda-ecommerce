@@ -3,12 +3,15 @@ const app = express();
 import dotenv from "dotenv";
 import connectDB from "./config/db.js";
 import productRoutes from "./routes/productRoutes.js";
+import usersRoutes from "./routes/userRoutes.js";
 import { notFound, errorHandler } from "./middleware/errormidleware.js";
 connectDB();
 dotenv.config();
 
-app.use("/api/products", productRoutes);
+app.use(express.json());
 
+app.use("/api/products", productRoutes);
+app.use("/api/users", usersRoutes);
 app.use(notFound);
 
 app.use(errorHandler);
