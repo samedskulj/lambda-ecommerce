@@ -22,6 +22,38 @@ const getUserAuth = asnycHandler(async (req, res) => {
   }
 });
 
+// @desc Registering a User
+// @route POST /api/users
+// @access Public
+const registerUser = asnycHandler(async (req, res) => {
+  const { name, email, password } = req.body;
+  const userExists = await User.findOne({ email });
+
+  if (userExists) {
+    res.status(400);
+    throw new Error("User already exists");
+  }
+
+  const user = await User.create({
+    name,
+    email,
+    password,
+  });
+  if (user) {
+    res.status(201);
+    res.json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      token: generateToken(user._id),
+    });
+  } else {
+    res.status(400);
+    throw new Error("User has not been created - error while trying to!");
+  }
+});
+
 // @desc Get User Profile
 // @route GET /api/users/profile
 // @access Private
@@ -42,4 +74,4 @@ const getUserProfile = asnycHandler(async (req, res) => {
   }
 });
 
-export { getUserAuth, getUserProfile };
+export { getUserAuth, registerUser, getUserProfile };
