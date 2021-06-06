@@ -1,11 +1,17 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
-
+import blue from "@material-ui/core/colors/blue";
 export const theme = createMuiTheme({
   palette: {
     primary: {
       main: "#2d3436",
     },
+  },
+});
+
+export const themeBread = createMuiTheme({
+  palette: {
+    primary: blue,
   },
 });
 
@@ -98,5 +104,16 @@ export default makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+  },
+  checkoutNav: {
+    display: "flex",
+    justifyContent: "center",
+    marginBottom: theme.spacing(4),
+  },
+  linkoviBread: {
+    color: "inherit",
+    "&:hover": {
+      textDecoration: "none",
+    },
   },
 }));

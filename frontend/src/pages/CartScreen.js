@@ -129,13 +129,15 @@ const CartScreen = ({ match, location, history }) => {
               </ListItem>
               <Divider></Divider>
               <ListItem>
-                <Button
-                  color="primary"
-                  variant="contained"
-                  onClick={checkoutHandler}
-                >
-                  Proceed to checkout
-                </Button>
+                <Link className={classes.linkovi} to="/login?redirect=shipping">
+                  <Button
+                    color="primary"
+                    variant="contained"
+                    onClick={checkoutHandler}
+                  >
+                    Proceed to checkout
+                  </Button>
+                </Link>
               </ListItem>
             </List>
           </Card>
