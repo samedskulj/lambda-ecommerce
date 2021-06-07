@@ -19,7 +19,9 @@ export default makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-
+  rootAvatar: {
+    marginRight: "20px",
+  },
   title: {
     flexGrow: 1,
   },
@@ -76,10 +78,6 @@ export default makeStyles((theme) => ({
   large: {
     width: theme.spacing(14),
     height: theme.spacing(14),
-  },
-  list: {
-    width: "100%",
-    border: "2px solid green",
   },
   listItemFlex: {
     display: "flex",

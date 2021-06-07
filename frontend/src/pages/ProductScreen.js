@@ -69,13 +69,13 @@ const ProductScreen = ({ match, history }) => {
               <ListItem>{product.description}</ListItem>
             </List>
           </Grid>
-          <Grid item md={3}>
+          <Grid item xs={12} md={3}>
             <Card>
               <CardActionArea className={classes.cardCart}>
                 <List>
                   <ListItem>
-                    <Grid container>
-                      <Grid item md={9}>
+                    <Grid container alignItems="space-around">
+                      <Grid item xs={9} md={9}>
                         Price:
                       </Grid>
                       <Grid item>${product.price}</Grid>
@@ -84,7 +84,7 @@ const ProductScreen = ({ match, history }) => {
                   <Divider></Divider>
                   <ListItem>
                     <Grid container>
-                      <Grid item md={9}>
+                      <Grid item xs={9} md={9}>
                         Status:
                       </Grid>
                       <Grid item>
@@ -100,7 +100,7 @@ const ProductScreen = ({ match, history }) => {
                   {product.countInStock > 0 && (
                     <ListItem>
                       <Grid container>
-                        <Grid item md={9}>
+                        <Grid item xs={9} md={9}>
                           Qty:
                         </Grid>
                         <Grid item>

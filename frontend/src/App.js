@@ -14,6 +14,8 @@ import RegisterScreen from "./pages/RegisterScreen";
 import ProfileScreen from "./pages/ProfileScreen";
 import ShippingScreen from "./pages/ShippingScreen";
 import PaymentScreen from "./pages/PaymentScreen";
+import PlaceOrderScreen from "./pages/PlaceOrderScreen";
+
 function App() {
   const classes = useStyles();
   return (
@@ -35,8 +37,7 @@ function App() {
               <Route path="/profile" component={ProfileScreen}></Route>
               <Route path="/shipping" component={ShippingScreen}></Route>
               <Route path="/payment" component={PaymentScreen}></Route>
-
-              <Footer></Footer>
+              <Route path="/placeorder" component={PlaceOrderScreen}></Route>
             </Container>
           </ThemeProvider>
         </Switch>
