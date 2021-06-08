@@ -11,7 +11,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUserDetails, updateUserProfile } from "../actions/userActions";
 import Alert from "@material-ui/lab/Alert";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-
+import { listMyOrders } from "../actions/orderActions";
+import Loader from "../components/Home/Loader";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@material-ui/core";
 const ProfileScreen = ({ location, history }) => {
   const classes = useStyles();
   const [email, setEmail] = useState("");
@@ -23,6 +32,10 @@ const ProfileScreen = ({ location, history }) => {
 
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
+
+  const orderListMy = useSelector((state) => state.orderListMy);
+  const { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
+
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
@@ -34,6 +47,7 @@ const ProfileScreen = ({ location, history }) => {
     } else {
       if (!user.name) {
         dispatch(getUserDetails("profile"));
+        dispatch(listMyOrders());
       } else {
         setName(user.name);
         setEmail(user.email);
@@ -138,6 +152,62 @@ const ProfileScreen = ({ location, history }) => {
           </Grid>
           <Grid item md={9}>
             <h2>My Orders</h2>
+            {loadingOrders ? (
+              <Loader></Loader>
+            ) : errorOrders ? (
+              <Alert>{errorOrders}</Alert>
+            ) : (
+              <TableContainer>
+                <TableHead>
+                  <TableRow>
+                    <TableCell>ID</TableCell>
+                    <TableCell>Date</TableCell>
+                    <TableCell>Total</TableCell>
+                    <TableCell>Paid</TableCell>
+                    <TableCell>Delivered</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {orders.length !== 0 &&
+                    orders.map((order) => {
+                      return (
+                        <TableRow key={order._id}>
+                          <TableCell>{order._id}</TableCell>
+                          <TableCell>
+                            {order.createdAt.substring(0, 10)}
+                          </TableCell>
+                          <TableCell>{order._id.totalPrice}</TableCell>
+                          <TableCell>
+                            {order.isPaid ? (
+                              order.paidAt.substring(0, 10)
+                            ) : (
+                              <i
+                                className="fas fa-times"
+                                style={{ color: "red" }}
+                              ></i>
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            {order.isDelivered ? (
+                              order.deliveredAt.substring(0, 10)
+                            ) : (
+                              <i
+                                className="fas fa-times"
+                                style={{ color: "red" }}
+                              ></i>
+                            )}
+                          </TableCell>
+                          <TableCell>
+                            <Link to={`order/${order._id}`}>
+                              <Button>Details</Button>
+                            </Link>
+                          </TableCell>
+                        </TableRow>
+                      );
+                    })}
+                </TableBody>
+              </TableContainer>
+            )}
           </Grid>
         </Grid>
       </Container>
