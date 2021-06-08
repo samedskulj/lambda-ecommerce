@@ -66,7 +66,7 @@ const ProfileScreen = ({ location, history }) => {
   return (
     <>
       <Container>
-        <Grid container>
+        <Grid container spacing={5}>
           <Grid item md={3}>
             <div className={classes.paper}>
               <Avatar className={classes.avatar}>
