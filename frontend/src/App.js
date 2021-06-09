@@ -16,6 +16,9 @@ import ShippingScreen from "./pages/ShippingScreen";
 import PaymentScreen from "./pages/PaymentScreen";
 import PlaceOrderScreen from "./pages/PlaceOrderScreen";
 import OrderScreen from "./pages/OrderScreen";
+import UserScreenList from "./pages/UserScreenList";
+import UserEditScreen from "./pages/UserEditScreen";
+
 function App() {
   const classes = useStyles();
   return (
@@ -38,6 +41,15 @@ function App() {
               <Route path="/shipping" component={ShippingScreen}></Route>
               <Route path="/payment" component={PaymentScreen}></Route>
               <Route path="/placeorder" component={PlaceOrderScreen}></Route>
+              <Route
+                exact
+                path="/admin/userList"
+                component={UserScreenList}
+              ></Route>
+              <Route
+                path="/admin/user/:id/edit"
+                component={UserEditScreen}
+              ></Route>
               <Route path="/order/:id" component={OrderScreen}></Route>
             </Container>
           </ThemeProvider>

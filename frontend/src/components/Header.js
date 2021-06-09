@@ -20,14 +20,25 @@ const Header = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl2, setAnchorEl2] = React.useState(null);
+
   const open = Boolean(anchorEl);
+  const open2 = Boolean(anchorEl2);
+
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
+  };
+  const handleMenu2 = (event) => {
+    setAnchorEl2(event.currentTarget);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleClose2 = () => {
+    setAnchorEl2(null);
+  };
+
   const dispatch = useDispatch();
   const classes = useStyles();
   const logoutHandler = () => {
@@ -60,6 +71,57 @@ const Header = () => {
                 Cart
               </Button>
             </Link>
+            {userInfo && userInfo.isAdmin && (
+              <>
+                <IconButton
+                  aria-label="account of current user"
+                  aria-controls="admin"
+                  aria-haspopup="true"
+                  onClick={handleMenu2}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                  <Typography
+                    className={classes.headerProfileLink}
+                    variant="body2"
+                  >
+                    Admin Options
+                  </Typography>
+                </IconButton>
+                <Menu
+                  id="admin"
+                  anchorEl={anchorEl2}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={open2}
+                  onClose={handleClose2}
+                >
+                  {" "}
+                  <MenuItem>
+                    <Link className={classes.linkovi} to="/admin/userlist">
+                      Users
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link className={classes.linkovi} to="/admin/products">
+                      Products
+                    </Link>
+                  </MenuItem>
+                  <MenuItem>
+                    <Link className={classes.linkovi} to="/admin/orderlist">
+                      Orders
+                    </Link>
+                  </MenuItem>
+                </Menu>
+              </>
+            )}
             {userInfo ? (
               <div>
                 <IconButton
