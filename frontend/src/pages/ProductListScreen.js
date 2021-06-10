@@ -56,7 +56,14 @@ const ProductListScreen = ({ history, match }) => {
     } else {
       dispatch(listProducts());
     }
-  }, [dispatch, successDeleteProduct, userInfo, successCreate, createdProduct]);
+  }, [
+    dispatch,
+    history,
+    successDeleteProduct,
+    userInfo,
+    successCreate,
+    createdProduct,
+  ]);
 
   const deleteHandler = (id) => {
     dispatch(deleteProductById(id));

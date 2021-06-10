@@ -19,6 +19,8 @@ import OrderScreen from "./pages/OrderScreen";
 import UserScreenList from "./pages/UserScreenList";
 import UserEditScreen from "./pages/UserEditScreen";
 import ProductListScreen from "./pages/ProductListScreen";
+import ProductEditScreen from "./pages/ProductEditScreen";
+
 function App() {
   const classes = useStyles();
   return (
@@ -49,6 +51,10 @@ function App() {
               <Route
                 path="/admin/user/:id/edit"
                 component={UserEditScreen}
+              ></Route>
+              <Route
+                path="/admin/product/:id/edit"
+                component={ProductEditScreen}
               ></Route>
               <Route path="/order/:id" component={OrderScreen}></Route>
               <Route
