@@ -18,7 +18,7 @@ import PlaceOrderScreen from "./pages/PlaceOrderScreen";
 import OrderScreen from "./pages/OrderScreen";
 import UserScreenList from "./pages/UserScreenList";
 import UserEditScreen from "./pages/UserEditScreen";
-
+import ProductListScreen from "./pages/ProductListScreen";
 function App() {
   const classes = useStyles();
   return (
@@ -51,6 +51,10 @@ function App() {
                 component={UserEditScreen}
               ></Route>
               <Route path="/order/:id" component={OrderScreen}></Route>
+              <Route
+                path="/admin/products"
+                component={ProductListScreen}
+              ></Route>
             </Container>
           </ThemeProvider>
         </Switch>

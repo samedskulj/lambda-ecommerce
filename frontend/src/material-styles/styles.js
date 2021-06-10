@@ -114,4 +114,7 @@ export default makeStyles((theme) => ({
       textDecoration: "none",
     },
   },
+  tableWidth: {
+    width: "100%",
+  },
 }));
