@@ -88,7 +88,7 @@ export const updateOrderToDelivered = asnycHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
 
   if (order) {
-    order.idDelivered = true;
+    order.isDelivered = true;
     order.deliveredAt = Date.now();
     const updatedOrder = await order.save();
     res.json(updatedOrder);
@@ -96,4 +96,13 @@ export const updateOrderToDelivered = asnycHandler(async (req, res) => {
     res.status(404);
     throw new Error("Order not found");
   }
+});
+
+// @desc Get all orders
+// @route GET /api/orders/myorders
+// @access Private/Admin
+
+export const getOrders = asnycHandler(async (req, res) => {
+  const orders = await Order.find().populate("user", "id name");
+  res.json(orders);
 });

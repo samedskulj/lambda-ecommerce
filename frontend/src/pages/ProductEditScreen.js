@@ -15,6 +15,7 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Loader from "../components/Home/Loader";
 import { updateProduct } from "../actions/productActions";
 import { PRODUCT_UPDATE_RESET } from "../reducer-const/productConst";
+import axios from "axios";
 const ProductEditScreen = ({ match, history }) => {
   const productId = match.params.id;
   const classes = useStyles();
@@ -25,6 +26,8 @@ const ProductEditScreen = ({ match, history }) => {
   const [category, setCategory] = useState("");
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState("");
+  const [uploading, setUploading] = useState(false);
+
   const dispatch = useDispatch();
 
   const productDetails = useSelector((state) => state.productDetails);
@@ -54,7 +57,7 @@ const ProductEditScreen = ({ match, history }) => {
         setDescription(product.description);
       }
     }
-  }, [product, history, dispatch, dispatch, productId]);
+  }, [product, history, dispatch, dispatch, productId, successUpdate]);
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
@@ -70,7 +73,27 @@ const ProductEditScreen = ({ match, history }) => {
       })
     );
   };
-
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", file);
+    console.log(file);
+    console.log(formData);
+    setUploading(true);
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      };
+      const { data } = await axios.post("/api/upload", formData, config);
+      setImage(`/${data}`);
+      setUploading(false);
+    } catch (error) {
+      console.error(error);
+      setUploading(false);
+    }
+  };
   return (
     <>
       <Container>
@@ -117,19 +140,30 @@ const ProductEditScreen = ({ match, history }) => {
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="image"
-              label="Image"
-              name="image"
-              autoFocus
-              type="text"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-            />
+            <div className={classes.uploadDiv}>
+              <TextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="image"
+                label="Enter Image Url"
+                name="image"
+                autoFocus
+                type="text"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+              />
+              <Button
+                variant="contained"
+                className={classes.inputFile}
+                component="label"
+              >
+                Upload file
+                <input type="file" hidden onChange={uploadFileHandler}></input>
+                {uploading && <Loader></Loader>}
+              </Button>
+            </div>
             <TextField
               variant="outlined"
               margin="normal"

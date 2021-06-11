@@ -117,4 +117,19 @@ export default makeStyles((theme) => ({
   tableWidth: {
     width: "100%",
   },
+  uploadDiv: {
+    alignItems: "center",
+    display: "flex",
+
+    padding: 0,
+    margin: 0,
+  },
+  inputFile: {
+    height: "100%",
+    border: 0,
+    margin: 0,
+    height: "3.36rem",
+    width: "300px",
+    marginTop: "5px",
+  },
 }));

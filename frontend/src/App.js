@@ -20,7 +20,7 @@ import UserScreenList from "./pages/UserScreenList";
 import UserEditScreen from "./pages/UserEditScreen";
 import ProductListScreen from "./pages/ProductListScreen";
 import ProductEditScreen from "./pages/ProductEditScreen";
-
+import OrderListScreen from "./pages/OrderListScreen";
 function App() {
   const classes = useStyles();
   return (
@@ -61,6 +61,7 @@ function App() {
                 path="/admin/products"
                 component={ProductListScreen}
               ></Route>
+              <Route path="/admin/orders" component={OrderListScreen}></Route>
             </Container>
           </ThemeProvider>
         </Switch>

@@ -115,7 +115,7 @@ const Header = () => {
                     </Link>
                   </MenuItem>
                   <MenuItem>
-                    <Link className={classes.linkovi} to="/admin/orderlist">
+                    <Link className={classes.linkovi} to="/admin/orders">
                       Orders
                     </Link>
                   </MenuItem>

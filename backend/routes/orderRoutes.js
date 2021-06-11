@@ -6,10 +6,14 @@ import {
   getOrderById,
   updateOrderToPaid,
   updateOrderToDelivered,
+  getOrders,
 } from "../controllers/orderController.js";
 import { isAdmin, protectProfile } from "../middleware/auth.js";
 
-router.route("/").post(protectProfile, addOrderItems);
+router
+  .route("/")
+  .post(protectProfile, addOrderItems)
+  .get(protectProfile, isAdmin, getOrders);
 router.route("/myorders").get(protectProfile, getMyOrders);
 
 router.route("/:id").get(protectProfile, getOrderById);
