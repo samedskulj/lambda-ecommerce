@@ -132,4 +132,24 @@ export default makeStyles((theme) => ({
     width: "300px",
     marginTop: "5px",
   },
+  reviewSign: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  reviewShowListItem: {
+    display: "flex",
+    justifyContent: "space-between",
+    flexDirection: "column",
+    alignItems: "start",
+  },
+  headerSearch: {
+    marginLeft: 7,
+    marginRight: 8,
+    marginBottom: 6,
+    height: 35,
+    color: "black",
+    backgroundColor: "white",
+  },
 }));

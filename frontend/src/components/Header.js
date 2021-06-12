@@ -1,4 +1,5 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
@@ -16,6 +17,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import { logout } from "../actions/userActions";
+import SearchBar from "./SearchBar";
 const Header = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -63,6 +65,11 @@ const Header = () => {
             <Typography variant="h6" className={classes.title}>
               Lambda
             </Typography>
+            <Route
+              render={({ history }) => (
+                <SearchBar history={history}></SearchBar>
+              )}
+            />
             <Link className={classes.linkovi} to="/cart">
               <Button color="inherit">
                 <AddShoppingCartIcon

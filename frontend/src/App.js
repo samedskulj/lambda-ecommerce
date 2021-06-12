@@ -21,6 +21,7 @@ import UserEditScreen from "./pages/UserEditScreen";
 import ProductListScreen from "./pages/ProductListScreen";
 import ProductEditScreen from "./pages/ProductEditScreen";
 import OrderListScreen from "./pages/OrderListScreen";
+import SearchBar from "./components/SearchBar";
 function App() {
   const classes = useStyles();
   return (
@@ -62,6 +63,7 @@ function App() {
                 component={ProductListScreen}
               ></Route>
               <Route path="/admin/orders" component={OrderListScreen}></Route>
+              <Route path="/search/:keyword" component={Home}></Route>
             </Container>
           </ThemeProvider>
         </Switch>

@@ -4,7 +4,10 @@ import asnycHandler from "express-async-handler";
 // @route GET /api/products
 // @access Public
 const getProducts = asnycHandler(async (req, res) => {
-  const products = await Product.find({});
+  const keyword = req.query.keyword
+    ? { name: { $regex: req.query.keyword, $options: "i" } }
+    : {};
+  const products = await Product.find({ ...keyword });
   res.json(products);
 });
 // @desc Fetch single product
@@ -76,10 +79,50 @@ const updateProduct = asnycHandler(async (req, res) => {
     throw new Error("Product not found");
   }
 });
+
+// @desc Create new review
+// @route POST /api/product/:id/reviews
+// @access Private
+const createProductReview = asnycHandler(async (req, res) => {
+  const { rating, comment } = req.body;
+  const product = await Product.findById(req.params.id);
+
+  if (product) {
+    const alreadyRev = product.reviews.find(
+      (r) => r.user.toString() === req.user._id.toString()
+    );
+    if (alreadyRev) {
+      res.status(400);
+      throw new Error("Product already reviewed");
+    }
+
+    const review = {
+      name: req.user.name,
+      rating: Number(rating),
+      comment,
+      user: req.user._id,
+    };
+    product.reviews.push(review);
+
+    product.numReviews = product.reviews.length;
+
+    product.rating =
+      product.reviews.reduce((acc, item) => item.rating + acc, 0) /
+      product.reviews.length;
+
+    await product.save();
+    res.status(201).json({ message: "Review added" });
+  } else {
+    res.status(404);
+    throw new Error("Product not found");
+  }
+});
+
 export {
   getProducts,
   getProductbyId,
   deleteProduct,
   updateProduct,
   createProduct,
+  createProductReview,
 };
