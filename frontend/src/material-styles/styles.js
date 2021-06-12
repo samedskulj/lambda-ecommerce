@@ -152,4 +152,10 @@ export default makeStyles((theme) => ({
     color: "black",
     backgroundColor: "white",
   },
+  paginateColor: {
+    marginTop: 30,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 }));

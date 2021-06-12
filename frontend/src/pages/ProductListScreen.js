@@ -15,7 +15,7 @@ import {
 } from "../actions/productActions";
 import Loader from "../components/Home/Loader";
 import { PRODUCT_CREATE_RESET } from "../reducer-const/productConst";
-
+import Paginate from "../components/Paginate";
 import {
   Table,
   TableBody,
@@ -27,10 +27,11 @@ import {
 import { green, red } from "@material-ui/core/colors";
 
 const ProductListScreen = ({ history, match }) => {
+  const pageNumber = match.params.pageNumber || 1;
   const dispatch = useDispatch();
   const classes = useStyles();
   const productList = useSelector((state) => state.productList);
-  const { products, loading, error } = productList;
+  const { products, loading, error, page, pages } = productList;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -54,7 +55,7 @@ const ProductListScreen = ({ history, match }) => {
     if (successCreate) {
       history.push(`/admin/product/${createdProduct._id}/edit`);
     } else {
-      dispatch(listProducts());
+      dispatch(listProducts("", pageNumber));
     }
   }, [
     dispatch,
@@ -63,6 +64,7 @@ const ProductListScreen = ({ history, match }) => {
     userInfo,
     successCreate,
     createdProduct,
+    pageNumber,
   ]);
 
   const deleteHandler = (id) => {
@@ -139,6 +141,7 @@ const ProductListScreen = ({ history, match }) => {
             </TableContainer>
           </>
         )}
+        <Paginate pages={pages} page={page} isAdmin={true}></Paginate>
       </Container>
     </>
   );

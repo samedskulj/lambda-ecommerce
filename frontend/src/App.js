@@ -32,6 +32,8 @@ function App() {
             <Header></Header>
             <Container>
               <Route exact path="/" component={Home}></Route>
+              <Route exact path="/page/:pageNumber" component={Home}></Route>
+
               <Route
                 exact
                 path="/product/:id"
@@ -61,9 +63,19 @@ function App() {
               <Route
                 path="/admin/products"
                 component={ProductListScreen}
+                exact
+              ></Route>
+              <Route
+                path="/admin/products/:pageNumber"
+                component={ProductListScreen}
+                exact
               ></Route>
               <Route path="/admin/orders" component={OrderListScreen}></Route>
-              <Route path="/search/:keyword" component={Home}></Route>
+              <Route path="/search/:keyword" component={Home} exact></Route>
+              <Route
+                path="/search/:keyword/page/:pageNumber"
+                component={Home}
+              ></Route>
             </Container>
           </ThemeProvider>
         </Switch>
