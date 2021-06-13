@@ -28,6 +28,7 @@ export default makeStyles((theme) => ({
   appbarFont: {
     textTransform: "uppercase",
   },
+
   headerProfileLink: {
     fontSize: "0.9rem",
     textTransform: "uppercase",
@@ -157,5 +158,8 @@ export default makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+  },
+  responsiveIcon: {
+    color: "white",
   },
 }));
