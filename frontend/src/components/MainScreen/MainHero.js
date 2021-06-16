@@ -40,18 +40,18 @@ const MainHero = () => {
 
       <div className="main-hero-img-div">
         <img className="mainheroimg" src={MainHeroImg}></img>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1 1">
-          <defs>
-            <clipPath clipPathUnits="objectBoundingBox" id="mainherosvg">
-              <path
-                class="cls-1"
-                d="M0,0V.66H0C0,.85.23,1,.5,1S1,.84,1,.65H1V0Z"
-              />
-              <path d="M1,0H0V.66H0C0,.85.23,1,.5,1S1,.84,1,.65H1V0Z" />
-            </clipPath>
-          </defs>
-        </svg>
       </div>
+      <svg>
+        <defs>
+          <clipPath clipPathUnits="objectBoundingBox" id="mainherosvg">
+            <path
+              class="cls-1"
+              d="M0,0V.66H0C0,.85.23,1,.5,1S1,.84,1,.65H1V0Z"
+            />
+            <path d="M1,0H0V.66H0C0,.85.23,1,.5,1S1,.84,1,.65H1V0Z" />
+          </clipPath>
+        </defs>
+      </svg>
     </>
   );
 };

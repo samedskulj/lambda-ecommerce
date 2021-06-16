@@ -9,4 +9,4 @@ export const themeMain = createMuiTheme({
   },
 });
 
-export default makeStyles((theme) => ({}));
+export default makeStyles((theme) => ({ btnfooter: { marginTop: 50 } }));
