@@ -1,0 +1,42 @@
+$button-color: black;
+$transparent: transparent;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,600&display=swap");
+* {
+  font-family: "Poppins", sans-serif;
+}
+.main-header {
+  display: flex;
+  height: 2.3rem;
+  background-color: $transparent;
+  h3 {
+    text-align: left;
+    font-size: 1.5rem;
+  }
+}
+.main-grid {
+  height: 50vh;
+  h2 {
+    font-size: 4rem;
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+.main-hero-first-paragraph {
+  p {
+    font-size: 0.9rem;
+    margin: 0;
+    font-weight: 500;
+  }
+}
+.main-hero-img-div {
+  img {
+    position: absolute;
+    width: 41vw;
+    height: 90vh;
+    top: 0;
+    right: 0;
+    clip-path: url(#mainherosvg);
+    aspect-ratio: 1/1;
+  }
+}

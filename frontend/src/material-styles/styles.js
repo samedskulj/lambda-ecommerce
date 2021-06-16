@@ -1,6 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
 import blue from "@material-ui/core/colors/blue";
+
 export const theme = createMuiTheme({
   palette: {
     primary: {
@@ -14,7 +15,6 @@ export const themeBread = createMuiTheme({
     primary: blue,
   },
 });
-
 export default makeStyles((theme) => ({
   root: {
     flexGrow: 1,

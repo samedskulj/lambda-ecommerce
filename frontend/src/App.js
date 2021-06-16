@@ -22,18 +22,22 @@ import ProductListScreen from "./pages/ProductListScreen";
 import ProductEditScreen from "./pages/ProductEditScreen";
 import OrderListScreen from "./pages/OrderListScreen";
 import SearchBar from "./components/SearchBar";
+import MainScreen from "./pages/MainScreen";
+import { themeMain } from "./material-styles/mainstyles";
 function App() {
   const classes = useStyles();
   return (
     <>
       <Router>
         <Switch>
+          <ThemeProvider theme={themeMain}>
+            <Route exact path="/main" component={MainScreen}></Route>
+          </ThemeProvider>
           <ThemeProvider theme={theme}>
             <Header></Header>
             <Container>
               <Route exact path="/" component={Home}></Route>
               <Route exact path="/page/:pageNumber" component={Home}></Route>
-
               <Route
                 exact
                 path="/product/:id"
