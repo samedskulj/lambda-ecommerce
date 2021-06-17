@@ -150,7 +150,6 @@ $transparent: transparent;
   }
 }
 .maindesc-row {
-  border: 2px solid red;
   margin: 80px auto;
   padding: 100px 100px 100px 200px;
 }
@@ -158,7 +157,6 @@ $transparent: transparent;
 .maindesc-second,
 .maindesc-third,
 .maindesc-fourth {
-  border: 2px solid green;
   display: flex;
   img {
     margin-right: 10px;
@@ -215,4 +213,74 @@ hr {
 }
 .mainfooter-first {
   margin-bottom: 50px;
+}
+
+//Iphone uređaji
+
+@media only screen and (max-width: 900px) {
+  .main-hero-img-div {
+    display: none;
+  }
+  .main-header {
+    text-align: center;
+
+    height: 100%;
+    justify-content: center;
+  }
+  .mainexp-div-img {
+    display: none;
+  }
+  .mainexp-container {
+    margin: 0 auto;
+  }
+  .mainad-paragraph {
+    h2 {
+      font-size: 2rem;
+      margin: 0;
+      font-weight: 500;
+    }
+  }
+  .maintwoad-first-paragraph {
+    font-size: 2rem;
+    margin: 0;
+    p {
+      font-size: 0.9rem;
+    }
+  }
+  .second-paragraph {
+    height: 100%;
+    width: 100%;
+    p {
+      font-size: 0.9rem;
+    }
+  }
+  .maindesc-row {
+    margin: 30px auto;
+    padding: 0;
+  }
+
+  .maindesc-div {
+    padding-left: 48px;
+    height: 35vh;
+    font-size: 0.9rem;
+    width: 70%;
+  }
+  .maindesc-first,
+  .maindesc-second,
+  .maindesc-third,
+  .maindesc-fourth {
+    height: 50px;
+    img {
+      margin-right: 10px;
+      width: 40px;
+      height: 40px;
+    }
+    p {
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+  }
+  .mainfooter-div {
+    padding: 20px;
+  }
 }

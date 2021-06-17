@@ -3,6 +3,7 @@ import useStyles from "../../material-styles/mainstyles";
 import "../../sass/mainscreen.scss";
 import { Grid, Button } from "@material-ui/core";
 import MainExpImg from "../../images/florian-krumm-1osIUArK5oA-unsplash (1).jpg";
+import { Link } from "react-router-dom";
 const MainExp = () => {
   const classes = useStyles();
   return (
@@ -32,9 +33,11 @@ const MainExp = () => {
               dolorum tempora molestiae commodi aut odit?
             </p>
           </div>
-          <Button variant="outlined" color="primary">
-            Shop now!
-          </Button>
+          <Link className={classes.linkovi} to="/main">
+            <Button variant="outlined" color="primary">
+              Shop now!
+            </Button>
+          </Link>
         </Grid>
       </Grid>
       {/*SVG Clip Path*/}

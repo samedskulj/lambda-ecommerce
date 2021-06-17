@@ -199,7 +199,7 @@ const Header = () => {
       <AppBar position="static">
         <Container>
           <Toolbar>
-            <Link to="/" className={classes.linkovi}>
+            <Link to="/main" className={classes.linkovi}>
               <IconButton
                 edge="start"
                 className={classes.menuButton}

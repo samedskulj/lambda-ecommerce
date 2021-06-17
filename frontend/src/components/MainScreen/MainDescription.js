@@ -11,7 +11,7 @@ const MainDescription = () => {
   return (
     <>
       <Grid container className="maindesc-row">
-        <Grid item md={3} xs={12}>
+        <Grid item md={3} xs={6}>
           <div className="maindesc-first">
             <img src={Cruise}></img>
             <p>Free Shipping</p>
@@ -32,7 +32,6 @@ const MainDescription = () => {
           </div>
           <div className="maindesc-div">
             <p>
-              {" "}
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi
               labore nisi quisquam perferendis blanditiis cumque minima velit
               corrupti, temporibus quo.

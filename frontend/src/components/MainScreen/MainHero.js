@@ -3,6 +3,7 @@ import "../../sass/mainscreen.scss";
 import { Grid, Button } from "@material-ui/core";
 import MainHeroImg from "../../images/reynier-carl-wf0c0d-h2fE-unsplash.jpg";
 import useStyles from "../../material-styles/mainstyles";
+import { Link } from "react-router-dom";
 const MainHero = () => {
   const classes = useStyles();
   return (
@@ -27,13 +28,15 @@ const MainHero = () => {
             </p>
           </div>
           <div>
-            <Button
-              className={classes.btnColor}
-              variant="outlined"
-              color="primary"
-            >
-              Shop now!
-            </Button>
+            <Link className={classes.linkovi} to="/main">
+              <Button
+                className={classes.btnColor}
+                variant="outlined"
+                color="primary"
+              >
+                Shop now!
+              </Button>
+            </Link>
           </div>
         </Grid>
       </Grid>

@@ -5,7 +5,13 @@ import useStyles from "./material-styles/styles";
 import { theme } from "./material-styles/styles";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { Container, Grid } from "@material-ui/core";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { useEffect, useState } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import ProductScreen from "./pages/ProductScreen";
 import CartScreen from "./pages/CartScreen";
@@ -25,18 +31,20 @@ import SearchBar from "./components/SearchBar";
 import MainScreen from "./pages/MainScreen";
 import { themeMain } from "./material-styles/mainstyles";
 function App() {
-  const classes = useStyles();
+  const [once, setOnce] = useState(false);
+
+  useEffect(() => {
+    setOnce(true);
+  }, []);
   return (
     <>
       <Router>
         <Switch>
-          <ThemeProvider theme={themeMain}>
-            <Route exact path="/main" component={MainScreen}></Route>
-          </ThemeProvider>
+          <Route exact path="/" component={MainScreen} />
           <ThemeProvider theme={theme}>
             <Header></Header>
             <Container>
-              <Route exact path="/" component={Home}></Route>
+              <Route exact path="/main" component={Home}></Route>
               <Route exact path="/page/:pageNumber" component={Home}></Route>
               <Route
                 exact

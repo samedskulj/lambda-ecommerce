@@ -21,7 +21,7 @@ const MainTwoAd = () => {
           <div className="maintwoad-img-second">
             <img src={MainTwoAdSecond}></img>
           </div>
-          <div className="maintwoad-first-paragraph">
+          <div className="maintwoad-first-paragraph second-paragraph">
             <p>Sale Up To</p>
             <h2>30% OFF</h2>
             <p>ON SELECTED ITEMS</p>
