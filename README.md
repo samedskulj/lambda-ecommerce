@@ -45,7 +45,7 @@ As the name says you can check out your profile information in the menu. You can
 
 Here is the list of technologies used to make this website
 
-* HTML/CSS
+* HTML/CSS/SCSS
 * JavaScript
 * React JS
 * Redux
