@@ -57,3 +57,6 @@ Here is the list of technologies used to make this website
 
 The Dark Mode for this page will be available in the future. Currently only light mode exists! I hope you do not mind
 
+# Deployment
+
+This site is not deployed. Currently working on it
