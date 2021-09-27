@@ -60,3 +60,7 @@ The Dark Mode for this page will be available in the future. Currently only ligh
 # Deployment
 
 This site is not deployed. Currently working on it
+
+# Update v1.
+
+Fixed bugs
