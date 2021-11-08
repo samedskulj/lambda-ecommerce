@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Button, Container, Grid } from "@material-ui/core";
 import useStyles from "../material-styles/styles";
-import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
 import { useDispatch, useSelector } from "react-redux";
 import { savePaymentMethod } from "../actions/cartActions";
 import Checkout from "../components/Checkout";

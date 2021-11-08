@@ -9,8 +9,6 @@ import {
   ListItem,
 } from "@material-ui/core";
 import useStyles from "../material-styles/styles";
-import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
 import { useDispatch, useSelector } from "react-redux";
 import Checkout from "../components/Checkout";
 import Radio from "@material-ui/core/Radio";
