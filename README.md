@@ -64,3 +64,7 @@ This site is not deployed. Currently working on it
 # Update v1.
 
 Fixed bugs
+
+# Update v2.
+
+Just updated dependencies
